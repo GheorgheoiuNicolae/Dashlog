@@ -20,3 +20,30 @@ img {
 .dangerButton button {
   background-color: crimson !important;
 }
+
+
+.wallpaper,
+.wallpaper-faded {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  position: absolute;
+}
+
+.wallpaper {
+  /* background-image: url("https://www.meistertask.com/images/wallpapers/RHwFy48z.jpg"); */
+  background-image: url('../backgrounds/2_original.jpg');
+  background-size: cover;
+  background-position: center center;
+  opacity: .05;
+}
+
+.wallpaper-faded {
+  clip: rect(0px 200px auto 0px);
+  background-image: url('../backgrounds/2_blur.jpg');
+  background-size: cover;
+  background-position: center center;
+}

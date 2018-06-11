@@ -45,7 +45,8 @@
     "redux-logger": "2.8.1",
     "redux-promise": "^0.5.3",
     "redux-responsive": "^4.3.2",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "react-scripts-ts": "2.2.0"

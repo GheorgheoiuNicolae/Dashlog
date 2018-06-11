@@ -1,0 +1,54 @@
+@import './UserCard/user-Card.scss';
+
+aside.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  overflow: hidden;
+  width: 200px;
+  
+  .menu-toggle {
+    background: rgba(255, 255, 255, .02);
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 50px;
+  }
+  .logo-wrap {
+    max-width: 160px;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  .flat-button {
+    display:flex;
+    flex: 1;
+    text-decoration: none;
+  }
+  .menu-button {
+    display:flex;
+    flex: 1;
+    color: #c1c4ce;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px; 
+  }
+  .button-text {
+    display: flex;
+    flex: 1;
+    margin-left: 10px;
+    color: #c1c4ce;
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    flex-direction: row;
+  }
+  .logo {
+    padding-right: 9px;
+    width: 80%;
+  }
+}

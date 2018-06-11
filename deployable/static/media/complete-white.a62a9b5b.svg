@@ -1,0 +1,15 @@
+<svg width="292px" height="65px" viewBox="0 0 292 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="complete-white" transform="translate(-114.000000, -34.000000)">
+            <circle id="Oval-2" stroke="#FFFFFF" cx="119.191549" cy="51.1915494" r="4.19154935"></circle>
+            <circle id="Oval-2-Copy" stroke="#FFFFFF" cx="119.191549" cy="65.1915494" r="4.19154935"></circle>
+            <circle id="Oval-2-Copy-2" stroke="#FFFFFF" cx="119.191549" cy="80.1915494" r="4.19154935"></circle>
+            <rect id="Rectangle" fill="#FFFFFF" x="128" y="49" width="39.8197189" height="4.19154935" rx="2.09577468"></rect>
+            <rect id="Rectangle-Copy" fill="#FFFFFF" x="128" y="64" width="31.4366202" height="4.19154935" rx="2.09577468"></rect>
+            <rect id="Rectangle-Copy-2" fill="#FFFFFF" x="128" y="78" width="39.8197189" height="4.19154935" rx="2.09577468"></rect>
+            <text id="dashlog" font-family="Avenir-Medium, Avenir" font-size="64" font-weight="400" fill="#FFFFFF">
+                <tspan x="182" y="83">dashlog</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

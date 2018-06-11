@@ -1,0 +1,77 @@
+span.muidocs-icon-custom-github {
+  font-size: 12px !important; }
+
+.avatar {
+  border: 2px solid #3b4360;
+  box-shadow: 10px 10px 30px #191b27; }
+
+.User-Card {
+  padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; }
+  .User-Card .avatar-wrap {
+    padding: 0 10px;
+    display: flex;
+    align-items: center; }
+  .User-Card .settings-button {
+    position: absolute !important;
+    top: 90px;
+    right: 50px;
+    background-color: #494b58 !important;
+    border-radius: 100%;
+    box-shadow: 2px 2px 10px #333; }
+  .User-Card .username {
+    display: flex;
+    padding: 0 5px; }
+    .User-Card .username p {
+      font-size: 12px;
+      font-weight: bold;
+      color: #84838b;
+      text-shadow: 0px 0px 1px #000; }
+
+aside.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  overflow: hidden;
+  width: 200px; }
+  aside.sidebar .menu-toggle {
+    background: rgba(255, 255, 255, 0.02);
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 50px; }
+  aside.sidebar .logo-wrap {
+    max-width: 160px;
+    margin-left: 30px;
+    margin-top: 10px; }
+  aside.sidebar .flat-button {
+    display: flex;
+    flex: 1;
+    text-decoration: none; }
+  aside.sidebar .menu-button {
+    display: flex;
+    flex: 1;
+    color: #c1c4ce;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px; }
+  aside.sidebar .button-text {
+    display: flex;
+    flex: 1;
+    margin-left: 10px;
+    color: #c1c4ce; }
+  aside.sidebar .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    flex-direction: row; }
+  aside.sidebar .logo {
+    padding-right: 9px;
+    width: 80%; }

@@ -1,0 +1,95 @@
+.checklist-item {
+  padding: 16px 60px 16px 42px !important; }
+
+.checklist-item-checkbox {
+  left: 0 !important; }
+
+.checklist-item-remove {
+  top: 0px !important;
+  margin-right: 0 !important; }
+
+.modal-header {
+  background: ghostwhite; }
+
+.modal-header > div {
+  background: ghostwhite;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.close-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer; }
+
+.AddEntry .modal-header {
+  display: flex;
+  justify-content: center;
+  color: #6b7c93;
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7; }
+
+.AddEntry .modal-content {
+  display: flex;
+  flex-direction: row; }
+  .AddEntry .modal-content .left {
+    display: flex;
+    flex-direction: column;
+    flex: 7;
+    padding: 20px; }
+  .AddEntry .modal-content .right {
+    display: flex;
+    flex: 3;
+    padding: 20px;
+    border-left: 1px solid #eee;
+    flex-direction: column; }
+
+.AddEntry .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
+
+.AddEntry .field-wrap {
+  margin-bottom: 10px;
+  width: 100%; }
+
+.AddEntry .labels-select-area {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee; }
+  .AddEntry .labels-select-area .labels-heading {
+    margin: 0 10px; }
+
+.AddEntry .label-single {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #f8f8ff;
+  padding: 5px 2px; }
+  .AddEntry .label-single .label-filled-icon {
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 10px; }
+
+.AddEntry .label-name {
+  flex: 1;
+  font-size: 14px; }
+
+.labels-popover {
+  padding: 5px;
+  min-width: 200px;
+  justify-content: space-around; }
+  .labels-popover .labels-popover-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0; }

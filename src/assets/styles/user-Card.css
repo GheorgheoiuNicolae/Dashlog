@@ -1,0 +1,33 @@
+span.muidocs-icon-custom-github {
+  font-size: 12px !important; }
+
+.avatar {
+  border: 2px solid #3b4360;
+  box-shadow: 10px 10px 30px #191b27; }
+
+.User-Card {
+  padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; }
+  .User-Card .avatar-wrap {
+    padding: 0 10px;
+    display: flex;
+    align-items: center; }
+  .User-Card .settings-button {
+    position: absolute !important;
+    top: 90px;
+    right: 50px;
+    background-color: #494b58 !important;
+    border-radius: 100%;
+    box-shadow: 2px 2px 10px #333; }
+  .User-Card .username {
+    display: flex;
+    padding: 0 5px; }
+    .User-Card .username p {
+      font-size: 12px;
+      font-weight: bold;
+      color: #84838b;
+      text-shadow: 0px 0px 1px #000; }

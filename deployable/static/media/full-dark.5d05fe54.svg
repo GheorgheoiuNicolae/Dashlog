@@ -1,0 +1,17 @@
+
+<svg width="292px" height="65px" viewBox="0 0 292 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="full-black" transform="translate(-114.000000, -34.000000)">
+            <circle id="Oval-2" stroke="#E673D5" fill-opacity="0" fill="#FFC502" cx="119.191549" cy="51.1915494" r="4.19154935"></circle>
+            <circle id="Oval-2-Copy" stroke="#27B7F6" fill-opacity="0" fill="#FFC502" cx="119.191549" cy="65.1915494" r="4.19154935"></circle>
+            <circle id="Oval-2-Copy-2" stroke="#FFC502" fill-opacity="0" fill="#FFC502" cx="119.191549" cy="80.1915494" r="4.19154935"></circle>
+            <rect id="Rectangle" fill="#60719F" x="128" y="49" width="39.8197189" height="4.19154935" rx="2.09577468"></rect>
+            <rect id="Rectangle-Copy" fill="#7C92CA" x="128" y="64" width="31.4366202" height="4.19154935" rx="2.09577468"></rect>
+            <rect id="Rectangle-Copy-2" fill="#60719F" x="128" y="78" width="39.8197189" height="4.19154935" rx="2.09577468"></rect>
+            <text id="dashlog" font-family="Avenir-Medium, Avenir" font-size="64" font-weight="400">
+                <tspan x="182" y="83" fill="#7C92CA">dash</tspan>
+                <tspan x="318.32" y="83" fill="#60719F">log</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

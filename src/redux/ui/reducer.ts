@@ -10,6 +10,10 @@ export default function reducer(state: UiState = initialState, action: any) {
       return {
         ...state,
         activeModal: action.payload,
+        modal: {
+          name: action.payload.name,
+          data: action.payload.data
+        }
       };
     }
 
@@ -17,6 +21,10 @@ export default function reducer(state: UiState = initialState, action: any) {
       return {
         ...state,
         activeModal: null,
+        modal: {
+          name: '',
+          data: null
+        }
       };
     }
 

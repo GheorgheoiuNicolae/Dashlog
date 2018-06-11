@@ -1,14 +1,21 @@
 import { connect } from 'react-redux';
 import * as React from 'react';
 import { ApplicationState } from '../../redux/reducers';
-
-// import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
-// const logo = require('../../assets/logo.svg');
+import Sidebar from '../../layout/sidebar';
+import {
+  getInitialEntries, getEntryOnChildAdded,
+  getEntriesCount, getEntriesDates
+} from '../../redux/entries/creators';
 
 interface StateProps {
   auth: any;
 }
-interface DispatchProps {}
+interface DispatchProps {
+  getInitialEntries: Function;
+  getEntryOnChildAdded: Function;
+  getEntriesCount: Function;
+  getEntriesDates: Function;
+}
 interface OwnOptionalProps {}
 interface OwnProps extends Partial<OwnOptionalProps> { }
 
@@ -17,8 +24,17 @@ type Props = StateProps & DispatchProps & OwnProps;
 class Dashboard extends React.Component<Props, {}> {
   componentWillMount() {
     const { 
-      // auth
+      auth,
+      getEntryOnChildAdded,
+      getEntriesCount,
+      getEntriesDates,
     } = this.props;
+
+    getEntriesCount(auth.user.uid);
+    // get the array with dates of all the entries
+    getEntriesDates(auth.user.uid);
+    // get the newly added entry
+    getEntryOnChildAdded(auth.user.uid);
     // make initial api calls or connect to firebase
   }
 
@@ -30,7 +46,12 @@ class Dashboard extends React.Component<Props, {}> {
     return (
       <section className="Dashboard">
         <section className="App-Content">
-          {children}
+          <div className="wallpaper" />
+          <div className="wallpaper-faded" />
+          <Sidebar />
+          <section className="page-wrap">
+            {children}
+          </section>
         </section>
       </section>
     );
@@ -44,6 +65,9 @@ export default connect<StateProps, DispatchProps, OwnProps>(
     };
   },
   {
-    
+    getInitialEntries,
+    getEntryOnChildAdded,
+    getEntriesCount,
+    getEntriesDates,
   },
 )(Dashboard);

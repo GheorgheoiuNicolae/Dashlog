@@ -110,3 +110,6 @@
   .reset-password .error {
     color: crimson;
     margin: 5px 0; }
+
+.Home {
+  margin-left: 200px; }

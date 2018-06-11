@@ -8,6 +8,7 @@ import * as logger from 'redux-logger';
 
 const loggerOptions: logger.ReduxLoggerOptions = {
   collapsed: true,
+  predicate: (getState, action) => !action.type.includes('LIST_SCROLL'),
 };
 
 const middleware = applyMiddleware(thunk, ReduxPromise, logger(loggerOptions));

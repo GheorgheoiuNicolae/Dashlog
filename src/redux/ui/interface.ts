@@ -1,3 +1,6 @@
 export interface UiState {
-  activeModal: null | string;
+  modal: {
+    name: string;
+    data: any
+  };
 }

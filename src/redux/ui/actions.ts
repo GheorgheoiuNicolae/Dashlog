@@ -5,7 +5,10 @@ export const hideModal = (modalName: string) => ({
   payload: modalName,
 });
 
-export const showModal = (modalName: string) => ({
+export const showModal = (modalName: string, data?: any) => ({
   type: types.SHOW_MODAL,
-  payload: modalName,
+  payload: {
+    name: modalName,
+    data
+  },
 });

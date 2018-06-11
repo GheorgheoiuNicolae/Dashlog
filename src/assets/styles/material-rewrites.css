@@ -1,0 +1,83 @@
+/* Material rewrites  */
+.flex-1 {
+  display: flex !important;
+  flex: 1;
+  flex-direction: column; }
+
+.flex-1 input {
+  width: 100%; }
+
+.input-wrapper {
+  font-size: 14px !important;
+  height: 62px !important; }
+
+.input-wrapper label {
+  color: #6d7e94 !important;
+  top: 24px !important; }
+
+.input-wrapper input {
+  height: 60% !important;
+  margin-top: 23px !important;
+  padding: 0 10px !important;
+  background-color: rgba(0, 0, 0, 0.05) !important; }
+
+.input-wrapper hr {
+  bottom: 2px !important; }
+
+.textarea-wrapper {
+  margin-top: 10px;
+  font-size: 14px !important;
+  min-height: 62px !important; }
+
+.textarea-wrapper label {
+  color: #6d7e94 !important;
+  top: 24px !important; }
+
+.textarea-wrapper textarea {
+  margin-top: 23px !important;
+  margin-bottom: 20px;
+  padding: 10px !important;
+  background-color: rgba(0, 0, 0, 0.05) !important; }
+
+.textarea-wrapper hr {
+  bottom: 25px !important; }
+
+.datepicker-wrapper {
+  font-size: 14px !important;
+  min-height: 62px !important;
+  cursor: pointer; }
+
+.datepicker-wrapper hr {
+  display: none !important; }
+
+.datepicker-wrapper label {
+  color: #6d7e94 !important;
+  top: 24px !important; }
+
+.datepicker-wrapper input {
+  height: 50% !important;
+  margin-top: 23px !important;
+  margin-bottom: 20px;
+  padding: 10px !important;
+  border: 1px dashed #6b7c93 !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer !important; }
+
+.datepicker-wrapper hr {
+  bottom: 12px !important; }
+
+.input-wrapper.no-label {
+  margin-top: 0 !important;
+  position: relative;
+  top: -10px; }
+
+.input-wrapper.no-label.checklist-input {
+  /* border: 1px solid red; */
+  width: 100% !important;
+  overflow: hidden; }
+
+.input-wrapper.no-label input {
+  margin: 0 !important; }
+
+.input-wrapper.no-label hr {
+  bottom: 24px !important; }
