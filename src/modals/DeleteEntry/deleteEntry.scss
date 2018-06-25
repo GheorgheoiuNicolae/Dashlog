@@ -1,0 +1,15 @@
+.delete-entry-dialog {
+  .content {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+  }
+  footer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: 1px solid #eee;
+    padding: 10px;
+  }
+}

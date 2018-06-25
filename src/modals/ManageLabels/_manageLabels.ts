@@ -3,7 +3,7 @@ import { ApplicationState } from '../../redux/reducers';
 import ManageLabels from './ManageLabels';
 import { reduxForm } from 'redux-form';
 import { createLabel, editLabel, removeLabel } from '../../redux/labels/creators';
-import { hideModal } from '../../redux/ui/actions';
+import { hideManageLabelsModal } from '../../redux/labels/actions';
 import { setFieldValue } from '../../redux/ui///creators';
 
 export interface OwnOptionalProps {
@@ -11,6 +11,8 @@ export interface OwnOptionalProps {
   array: any;
   initialValues: any;
   destroy: any;
+  pristine?: any;
+  submitting?: any;
 }
 
 export interface OwnProps extends Partial<OwnOptionalProps> { }
@@ -26,7 +28,7 @@ export interface DispatchProps {
   createLabel: (label: any, user: any) => {};
   editLabel: Function;
   removeLabel: Function;
-  hideModal: Function;
+  hideManageLabelsModal: Function;
   setFieldValue: Function;
 }
 
@@ -43,7 +45,7 @@ export default connect<StateProps, DispatchProps, OwnProps>(
     createLabel,
     editLabel,
     removeLabel,
-    hideModal,
+    hideManageLabelsModal,
     setFieldValue,
   },
 )(reduxForm({

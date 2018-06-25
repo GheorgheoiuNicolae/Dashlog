@@ -3,7 +3,7 @@ import * as actions from './actions';
 import * as firebase from 'firebase';
 import * as uiActions from '../ui/actions';
 import { firebaseDb, firebaseAuth, firebaseStorage } from '../../firebase';
-
+import { toastr } from 'react-redux-toastr';
 // import * as types from './types';
 
 export function resetPasswordByEmail(email: string) {
@@ -21,9 +21,16 @@ export function login(user: any) {
     firebaseAuth.signInWithEmailAndPassword(user.email, user.password)
       .then((res) => {
         dispatch(actions.loginSuccess(res));
-        browserHistory.push('/overview');
+        browserHistory.push('/entries');
+        firebaseDb.ref().child(`users/${res.uid}/info`)
+          .update({
+            lastLoginDate: new Date()
+          });
       })
-      .catch((error) => dispatch(actions.loginError(error)));
+      .catch((error) => {
+        toastr.error('Error', 'Login Failed');
+        dispatch(actions.loginError(error));
+      });
   };
 }
 
@@ -35,10 +42,39 @@ export function register(userDetails: { email: string, password: string }) {
         firebaseDb.ref().child(`users/${user.uid}/info`)
           .set({
             email: user.email,
-            uid: user.uid
+            uid: user.uid,
+            registeredOn: new Date()
           }).then((res) => {
-            browserHistory.push('/overview');
-            dispatch(actions.registerSuccess(res));
+            
+            // set a default entry
+            let entryRef: any = firebaseDb.ref().child(`/entries/${user.uid}/list`).push();
+            let newEntryKey = entryRef.getKey();
+            const defaultEntry: any = {
+              title: 'Joined Dashlog',
+              dateTime: new Date().getTime(),
+              date: new Date().setHours(0, 0, 0, 0),
+              geoPlace: {
+                latitude: 0,
+                longitude: 0
+              }
+            };
+
+            defaultEntry.id = newEntryKey;
+            // Create the data we want to update
+            var updatedEntryData: any = {};
+            updatedEntryData[`entries/${user.uid}/totalEntries`] = 1;
+            updatedEntryData[`entries/${user.uid}/allDates`] = [defaultEntry.date];
+            updatedEntryData[`entries/${user.uid}/list/${newEntryKey}`] = defaultEntry;
+            // Do a deep-path update
+            firebaseDb.ref().update(updatedEntryData, function (error: any) {
+              if (error) {
+                console.error(error);
+                toastr.error('Error', 'Something went wrong while saving.');
+              } else {
+                browserHistory.push('/entries');
+                dispatch(actions.registerSuccess(res));
+              }
+            });
           });
       })
       .catch((error: any) => dispatch(actions.registerError(error)));
@@ -97,7 +133,9 @@ export function updateUserImageUrl(dispatch: any, data: any) {
   if (user) {
     user.updateProfile(data).then(function () {
       dispatch(actions.upadteUserPhotoURLSuccess());
+      toastr.success('Success', 'Avatar successfully updated');
     }).catch(function (error: any) {
+      toastr.error('Error', 'Something went wrong while updating your avatar');
       dispatch(actions.upadteUserPhotoURLError(error));
     });
   }
@@ -105,12 +143,15 @@ export function updateUserImageUrl(dispatch: any, data: any) {
 
 export function updateUserDisplayName(data: any) {
   const user = firebaseAuth.currentUser;
-  console.log('update data: ', data);
+  data.email = user ? user.email : '';
+  data.emailVerified = user ? user.emailVerified : false;
   return (dispatch: any) => {
     if (user) {
-      user.updateProfile(data).then(function () {
+      user.updateProfile(data).then(function (res: any) {
         dispatch(actions.updateUserDisplayNameSuccess());
+        toastr.success('Success', 'Your name successfully updated');
       }).catch(function (error: any) {
+        toastr.error('Error', 'Something went wrong while saving.');
         dispatch(actions.updateUserDisplayNameError(error));
       });
     }
@@ -123,9 +164,12 @@ export function updateUserEmail(email: string) {
     if (user) {
       user.updateEmail(email).then(function () {
         dispatch(actions.updateUserEmailSuccess());
+        toastr.success('Success', 'Your email was updated. Please click the link in the email to verify it.');
       }).catch(function (error: any) {
         if (error.code === 'auth/requires-recent-login') {
-          dispatch(actions.requestAuth());
+          dispatch(actions.requestAuth('changeEmail'));
+        } else {
+          toastr.error('Error', 'Something went wrong while saving.');
         }
         dispatch(actions.updateUserEmailError(error));
       });
@@ -141,12 +185,10 @@ export function reauthenticateUser(email: string, password: string) {
         email,
         password
       );
-      user.reauthenticateWithCredential(credential).then(function () {
-        console.log('reauth success');
+      user.reauthenticateWithCredential(credential).then(function (res: any) {
         dispatch(actions.reAuthSuccess());
         dispatch(uiActions.hideModal('requestAuth'));
-      }).catch(function (error: any) {
-        // An error happened.
+      }).catch((error: any) => {
         dispatch(actions.reAuthError(error));
       });
     }
@@ -159,9 +201,11 @@ export function sendConfirmationEmail() {
     if (user) {
       user.sendEmailVerification().then(function () {
         // Email sent.
+        toastr.success('Success', 'An email was sent with a confirmation link.');
         dispatch(actions.sendConfirmationEmailSuccess());
       }).catch(function (error: any) {
         // An error happened.
+        toastr.error('Error', 'Could not submit confirmation email.');
         dispatch(actions.sendConfirmationEmailError(error));
       });
     }
@@ -173,12 +217,13 @@ export function changePassword(newPassword: string) {
   return (dispatch: any) => {
     if (user) {
       user.updatePassword(newPassword).then(function () {
-        // Update successful.
         dispatch(actions.changePasswordSuccess());
+        toastr.success('Success', 'Your password was changed successfully.');
       }).catch(function (error: any) {
-        // An error happened.
         if (error.code === 'auth/requires-recent-login') {
-          dispatch(actions.requestAuth());
+          dispatch(actions.requestAuth('changePassword'));
+        } else {
+          toastr.error('Error', 'Something went wrong while changing your password');
         }
         dispatch(actions.changePasswordError(error));
       });

@@ -76,9 +76,8 @@ export const removeEntrySuccess = (entry: any) => ({
   payload: entry,
 });
 
-// what is this?
 export const registerError = (reason: any, error: any) => ({
-  type: types.RECEIVE_ENTRIES,
+  type: 'REGISTER_ERROR',
   payload: {
     reason: reason,
     error: error,

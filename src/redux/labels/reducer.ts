@@ -1,6 +1,5 @@
 import { deleteFromById, deleteFromAllIds } from '../../utils';
 import * as types from './types';
-import * as uiTypes from '../ui/types';
 import { initialState } from './initialState';
 import { LabelsState } from './interface';
 
@@ -83,38 +82,24 @@ export default function reducer(state: LabelsState = initialState, action: any) 
       };
     }
 
-    case uiTypes.HIDE_MODAL: {
-      switch (action.payload) {
-        case 'manageLabels': {
-          return {
-            ...state,
-            ui: {
-              ...state.ui,
-              showManageLabelsModal: false
-            }
-          };
+    case types.HIDE_MANAGE_LABELS_MODAL: {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          showManageLabelsModal: false
         }
-        default: {
-          return { ...state };
-        }
-      }
+      };
     }
 
-    case uiTypes.SHOW_MODAL: {
-      switch (action.payload) {
-        case 'manageLabels': {
-          return {
-            ...state,
-            ui: {
-              ...state.ui,
-              showManageLabelsModal: true
-            }
-          };
+    case types.SHOW_MANAGE_LABELS_MODAL: {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          showManageLabelsModal: true
         }
-        default: {
-          return { ...state };
-        }
-      }
+      };
     }
 
     default: {

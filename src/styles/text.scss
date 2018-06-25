@@ -1,4 +1,5 @@
 @import './variables.scss';
+
 h1 {
   font-size: 28px;
   font-weight: normal;
@@ -23,8 +24,8 @@ h2 {
   color: $TextDark;
 }
 
-p,
-span {
+#root p,
+#root span {
   font-size: 16px;
   color: $TextDark;
 }

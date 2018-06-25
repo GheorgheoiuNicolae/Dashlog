@@ -3,11 +3,14 @@ import { ApplicationState } from '../../redux/reducers';
 import AddEntryForm from './AddEntry';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { createEntry } from '../../redux/entries/creators';
+import { showManageLabelsModal, hideManageLabelsModal } from '../../redux/labels/actions';
 import { hideModal, showModal } from '../../redux/ui/actions';
 import { resetForm } from '../../redux/ui/creators';
 
 export interface OwnOptionalProps {
   handleSubmit?: any;
+  pristine?: any;
+  submitting?: boolean;
   array: any;
 }
 
@@ -18,13 +21,18 @@ export interface StateProps {
   activeModal: string;
   selectedLabels: any;
   labelsById: any;
+  location: any;
+  allDates: number[];
+  entriesCount: number;
 }
 
 export interface DispatchProps {
-  createEntry: (entry: any) => {};
+  createEntry: Function;
   hideModal: Function;
   showModal: Function;
   resetForm: Function;
+  showManageLabelsModal: Function;
+  hideManageLabelsModal: Function;
 }
 
 export default connect<StateProps, DispatchProps, OwnProps>(
@@ -38,12 +46,17 @@ export default connect<StateProps, DispatchProps, OwnProps>(
       selectedLabels: labels,
       activeModal: state.ui.modal.name,
       labelsById: state.labels.byId,
+      location: state.ui.location,
+      allDates: state.entries.allDates,
+      entriesCount: state.entries.entriesCount,
     };
   },
   {
     createEntry,
     hideModal,
     showModal,
+    showManageLabelsModal,
+    hideManageLabelsModal,
     resetForm
   },
 )(reduxForm({

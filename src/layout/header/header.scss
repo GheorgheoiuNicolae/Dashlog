@@ -1,0 +1,35 @@
+@import './Filters/filters.scss';
+
+header {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  right: 0;
+  height: 49px;
+  z-index: 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+
+  .header-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 12px;
+    border-right: 1px solid #eee;
+    padding-right: 10px;
+    .item-text {
+      margin: 0 5px;
+    }
+    p {
+      font-size: 12px !important;
+    }
+  }
+  .actions {
+    display: flex;
+    flex: 1;
+    padding-left: 20px;
+  }
+}

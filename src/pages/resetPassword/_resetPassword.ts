@@ -4,23 +4,31 @@ import ResetPassword from './ResetPassword';
 import { reduxForm } from 'redux-form';
 import { resetPasswordByEmail } from '../../redux/auth/creators';
 
+export interface OwnOptionalProps {
+  handleSubmit: any;
+  submitting: boolean;
+}
+export interface OwnProps extends Partial<OwnOptionalProps> { }
 export interface StateProps {
   requestedPasswordReset: boolean;
+  reduxForm: any;
+  auth: any;
 }
 
 export interface DispatchProps {
   resetPasswordByEmail: (email: string) => {};
-  handleSubmit: Function;
 }
 
 export interface OwnProps { }
 
-const mapStateToProps = (state: ApplicationState) => ({
-  requestedPasswordReset: state.auth.requestedPasswordReset,
-});
-
 export default connect<StateProps, DispatchProps, OwnProps>(
-  mapStateToProps,
+  (state: ApplicationState) => {
+    return {
+      auth: state.auth,
+      requestedPasswordReset: state.auth.requestedPasswordReset,
+      reduxForm: state.form
+    };
+  },
   {
     resetPasswordByEmail,
   },

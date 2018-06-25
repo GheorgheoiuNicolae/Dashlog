@@ -6,6 +6,7 @@
 @import './styles/global';
 @import './styles/material-rewrites';
 @import './styles/text';
+@import './styles/toastr-rewrites';
 
 .App {
   height: 100%;
@@ -16,7 +17,6 @@
 
 .App-Content {
   flex: 1;
-  padding: 20px;
   // background: $background;
 }
 
@@ -27,4 +27,7 @@
   background: gainsboro;
   justify-content: center;
   align-items: center;
+  background-image: url(/static/media/2_blur2.f2ee8d31.jpg);
+  background-size: cover;
+  background-position: center center;
 }

@@ -1,2 +1,199 @@
+.entry-list-item {
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+  height: 50px;
+  position: relative;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  transition: translate .18s, box-shadow .18s; }
+  .entry-list-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); }
+  .entry-list-item p.time {
+    position: absolute;
+    right: 0;
+    top: -28px;
+    font-size: 11px !important; }
+  .entry-list-item .main-label {
+    background: coral;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    margin: 0 10px 0 20px;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    color: #fff; }
+  .entry-list-item .entry-icons {
+    color: #616161;
+    border-left: 1px solid #F5F5F5; }
+    .entry-list-item .entry-icons svg {
+      padding: 0 10px; }
+  .entry-list-item .no-link {
+    display: flex;
+    flex: 1;
+    color: #8ca4af;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; }
+    .entry-list-item .no-link .button-text {
+      display: flex;
+      flex: 1;
+      margin: 0 10px; }
+  .entry-list-item .labels {
+    display: flex; }
+    .entry-list-item .labels .entry-label {
+      display: flex;
+      padding: 0 5px;
+      align-items: center; }
+      .entry-list-item .labels .entry-label .circle {
+        display: block;
+        width: 10px;
+        height: 10px;
+        margin: 0px 5px;
+        border-radius: 100%; }
+      .entry-list-item .labels .entry-label .label-name {
+        font-size: 12px; }
+
+.icon.icon-content {
+  background: #27B7F6; }
+
+.icon.icon-photo {
+  background: #FFC501; }
+
+.icon.icon-map {
+  background: #00C7C0; }
+
+.icon.icon-list {
+  background: #99A7CF; }
+
+.icon.icon-repeat {
+  background: #9012FE; }
+
+.icon.icon-regular {
+  background: #03A9F4; }
+
+.entry-icons span {
+  padding: 0 10px; }
+
+.injectedEntry {
+  background: #fff9c4; }
+
+.injectedEntry span:hover {
+  cursor: default; }
+
+.view-boxes.grid .entry-list-item {
+  border: 1px solid #eee;
+  flex-direction: column;
+  width: 240px;
+  float: left;
+  margin: 20px;
+  height: 120px;
+  border-radius: 15px 0 15px; }
+
+.view-boxes.grid .entry-list-item a {
+  text-align: center;
+  padding: 0 10px; }
+
+.view-boxes.grid .entry-list-item .entry-icons {
+  opacity: .8;
+  margin-bottom: 10px;
+  border: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #f3f5f7;
+  padding: 10px 0;
+  margin-bottom: 0;
+  border-radius: 0 0 15px 0; }
+
+.view-boxes.grid .entry-list-item .icon {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  margin-left: 0;
+  border-radius: 15px 0 15px 0; }
+
+.view-boxes.grid .entry-list-item button {
+  display: none !important; }
+
+.view-boxes.grid .entry-list-item {
+  height: auto !important; }
+
+.view-boxes.grid .entry-list-item .no-link {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 0; }
+
+.view-boxes.grid .entry-list-item .labels {
+  margin-top: 5px;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.view-boxes.grid .entry-list-item .entry-icons {
+  padding: 0 !important; }
+
+.view-boxes.grid .entry-list-item .entry-icons svg {
+  padding: 10px !important; }
+
+.view-boxes.grid .entry-list-item .labels .entry-label {
+  padding: 5px 0; }
+
+.view-boxes.grid .day {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 50px 30px 0 30px !important;
+  position: relative; }
+  .view-boxes.grid .day .date {
+    position: absolute;
+    top: 0; }
+
+.view-boxes.grid #entries-page-wrap .day .date {
+  position: absolute;
+  top: 0; }
+
 .Home {
   margin-left: 200px; }
+
+#entries-page-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+  padding: 0 0 0 200px; }
+  #entries-page-wrap .entry-list {
+    margin-top: 50px; }
+    #entries-page-wrap .entry-list.list {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-top: 50px;
+      position: relative; }
+  #entries-page-wrap .floating-action-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9; }
+  #entries-page-wrap .timeline-bar {
+    position: fixed;
+    width: 7px;
+    height: 100%;
+    background: #fff;
+    left: 264px;
+    padding: 0; }
+  #entries-page-wrap .day {
+    padding: 1px 30px 1px 30px; }
+    #entries-page-wrap .day .date {
+      margin-left: 50px;
+      color: #607d8b;
+      font-weight: bold; }
+  #entries-page-wrap #scrollTarget {
+    background: #E0F2F1; }

@@ -12,10 +12,23 @@ span.muidocs-icon-custom-github {
   flex-direction: column;
   align-items: center;
   position: relative; }
+  .User-Card .avatarWrap {
+    width: 100% !important;
+    height: 100% !important; }
+    .User-Card .avatarWrap img {
+      max-width: initial; }
   .User-Card .avatar-wrap {
-    padding: 0 10px;
     display: flex;
-    align-items: center; }
+    justify-content: center;
+    border: 2px solid #3b4360;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px; }
+    .User-Card .avatar-wrap .avatar {
+      box-shadow: 10px 10px 30px #191b27;
+      width: auto;
+      height: auto; }
   .User-Card .settings-button {
     position: absolute !important;
     top: 90px;
@@ -27,9 +40,9 @@ span.muidocs-icon-custom-github {
     display: flex;
     padding: 0 5px; }
     .User-Card .username p {
-      font-size: 12px;
+      font-size: 12px !important;
       font-weight: bold;
-      color: #84838b;
+      color: #7b91cb !important;
       text-shadow: 0px 0px 1px #000; }
 
 aside.sidebar {
@@ -66,7 +79,7 @@ aside.sidebar {
     display: flex;
     flex: 1;
     margin-left: 10px;
-    color: #c1c4ce; }
+    color: #c1c4ce !important; }
   aside.sidebar .button-wrapper {
     display: flex;
     justify-content: center;

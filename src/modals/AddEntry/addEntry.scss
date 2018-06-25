@@ -1,15 +1,5 @@
-.checklist-item {
-  padding: 16px 60px 16px 42px !important;
-}
-
-.checklist-item-checkbox {
-  left: 0 !important;
-}
-
-.checklist-item-remove {
-  top: 0px !important;
-  margin-right: 0 !important;
-}
+@import './LabelsPicker/labels-picker.scss';
+@import './CheckList/checkList.scss';
 
 .modal-header {
   background: ghostwhite;
@@ -76,6 +66,7 @@
     border-bottom: 1px solid #eee;
     .labels-heading {
       margin: 0 10px;
+      flex: 1;
     }
   }
   .label-single {
@@ -97,7 +88,7 @@
 }
 .labels-popover {
   padding: 5px;
-  min-width: 200px;
+  min-width: 160px;
   justify-content: space-around;
   .labels-popover-header {
     display: flex;
@@ -105,5 +96,49 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px 0;
+    strong {
+      color: #2b1a51;
+      font-size: 13px;
+    }
+  }
+
+  &.no-available-labels {
+    display: flex;
+    flex-direction: column;
+    width: 155px;
+    align-items: center;
+    padding: 15px;
+    small {
+      text-align: center;
+      color: rgb(107, 124, 147);
+    }
+  }
+}
+
+.field-wrap.with-icon {
+  display: flex;
+  flex-direction: row;
+  .icon {
+    background: #f2f2f2;
+    height: 26px;
+    margin-top: 23px;
+    padding: 5px;
+  }
+  .datepicker-wrapper {
+    input {
+      border: 0 !important;
+      background-color: rgba(0, 0, 0, 0.02) !important;
+    }
+    label {
+      left: -33px;
+    }
+  }
+
+  .location-label {
+    margin: 3px 10px 10px 10px;
+    font-weight: 400;
+  }
+  .location-icon {
+    color: #f44336 !important;
   }
 }

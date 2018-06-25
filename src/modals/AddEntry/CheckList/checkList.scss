@@ -1,0 +1,33 @@
+.check-list-wrapper {
+  margin-bottom: 10px;
+  h5.subheader {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+  }
+
+  h5.subheader p {
+    margin: 5px;
+  }
+
+  .checklist-item:hover .checklist-item-remove {
+    display: block !important;
+  }
+
+  .checklist-item {
+    padding: 10px 60px 10px 42px !important;
+  }
+
+  .checklist-item-checkbox {
+    left: 0 !important;
+    top: 5px !important;
+  }
+
+  .checklist-item-remove {
+    top: -5px !important;
+    display: none !important;
+    margin-right: 0 !important;
+  }
+}

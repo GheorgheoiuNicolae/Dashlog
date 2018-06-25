@@ -28,9 +28,34 @@ export default function reducer(state: UiState = initialState, action: any) {
       };
     }
 
+    case types.LIST_SCROLL: {
+      return {
+        ...state,
+        ...action.payload
+      };
+    }
+
+    case types.GET_LOCATION_SUCCESS: {
+      return {
+        ...state,
+        location: action.payload
+      };
+    }
+
+    case types.GET_LOCATION_SUCCESS: {
+      return {
+        ...state,
+        location: action.payload
+      };
+    }
+
     case authTypes.REQUEST_AUTH: {
       return {
         ...state,
+        modal: {
+          name: 'requestAuth',
+          data: null
+        },
         activeModal: 'requestAuth'
       };
     }

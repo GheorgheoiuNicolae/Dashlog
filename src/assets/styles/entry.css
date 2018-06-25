@@ -1,0 +1,75 @@
+#entry-single-wrap {
+  padding: 0 0 0 200px;
+  display: flex;
+  height: 100%; }
+  #entry-single-wrap form.edit-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    justify-content: space-between; }
+    #entry-single-wrap form.edit-form .labels-select {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #eee; }
+      #entry-single-wrap form.edit-form .labels-select .label-icon {
+        color: #673AB7 !important; }
+      #entry-single-wrap form.edit-form .labels-select .label-title {
+        margin: 0 10px;
+        flex: 1; }
+      #entry-single-wrap form.edit-form .labels-select .labels-popover {
+        padding: 5px;
+        min-width: 200px;
+        justify-content: space-around; }
+        #entry-single-wrap form.edit-form .labels-select .labels-popover .labels-popover-header {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          padding: 10px 0; }
+    #entry-single-wrap form.edit-form .label-single {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f8ff;
+      padding: 5px 2px; }
+      #entry-single-wrap form.edit-form .label-single .name {
+        flex: 1;
+        font-size: 14px; }
+      #entry-single-wrap form.edit-form .label-single .label-icon {
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: 10px; }
+    #entry-single-wrap form.edit-form .field-wrap {
+      margin-bottom: 10px; }
+    #entry-single-wrap form.edit-form .location-label {
+      margin: 3px 10px 10px 10px;
+      font-weight: 400; }
+  #entry-single-wrap .content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    padding: 20px 20px 0 20px; }
+    #entry-single-wrap .content .left-side {
+      display: flex;
+      flex-direction: column;
+      flex: 7;
+      padding: 0 20px 20px 0; }
+    #entry-single-wrap .content .right-side {
+      display: flex;
+      flex: 3;
+      padding: 0 20px 0 20px;
+      border-left: 1px solid #eee;
+      flex-direction: column; }
+  #entry-single-wrap footer {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #eee;
+    padding: 10px;
+    align-items: flex-end;
+    justify-content: space-between; }
+    #entry-single-wrap footer .successButton {
+      max-width: 120px; }

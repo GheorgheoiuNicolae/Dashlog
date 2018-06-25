@@ -4,13 +4,10 @@ import {
 } from 'redux-form-material-ui';
 import { Dialog, FlatButton, RaisedButton, IconButton } from 'material-ui';
 import { Field } from 'redux-form';
-import styled from 'styled-components';
 import { StateProps, DispatchProps, OwnProps } from './_manageLabels';
 import Close from 'material-ui/svg-icons/navigation/close';
 import Label from 'material-ui/svg-icons/action/label';
 import LabelColors from './LabelColors';
-
-import './style.css';
 
 export type Props = StateProps & OwnProps & DispatchProps;
 interface OtherProps {
@@ -32,13 +29,16 @@ export default class ManageLabels extends React.PureComponent<Props, OtherProps>
 
   handleSubmit = (values: any) => {
     const { destroy, createLabel, auth } = this.props;
-    createLabel({ name: values.name, color: values.color.code }, auth.user.uid);
+    createLabel({ 
+      name: values.name, 
+      color: values.color.code ? values.color.code : this.state.labelColor
+    }, auth.user.uid);
     destroy();
   }
 
-  closeModal = (modalName: string) => {
-    const { hideModal } = this.props;
-    hideModal(modalName);
+  closeModal = () => {
+    const { hideManageLabelsModal } = this.props;
+    hideManageLabelsModal();
   }
 
   handleClick(label: any) {
@@ -62,32 +62,51 @@ export default class ManageLabels extends React.PureComponent<Props, OtherProps>
   }
 
   render() {
-    const { handleSubmit, showManageLabelsModal, labelsById, labelsAllIds } = this.props;
+    const { 
+      handleSubmit, 
+      hideManageLabelsModal, 
+      showManageLabelsModal, 
+      labelsById, 
+      labelsAllIds,
+      pristine,
+      submitting
+    } = this.props;
+    const required = (value: any, message?: string) => {
+      return value ? undefined :
+        (message
+          ? (<small className="input-error">{message}</small>)
+          : (<small className="input-error">'Required'</small>)
+        );
+    };
+
     return (
       <Dialog
         modal={true}
         open={showManageLabelsModal}
-        onRequestClose={() => this.closeModal('manageLabels')}
+        onRequestClose={() => hideManageLabelsModal()}
         autoScrollBodyContent={true}
         bodyStyle={{ padding: '0' }}
         contentStyle={{ width: '60%' }}
+        className="manage-labels dialog"
       >
-        <ModalHeader className="modal-header">
+        <section className="modal-header">
           <h5 className="h5">Manage labels</h5>
-          <Close className="close-icon" onClick={() => this.closeModal('manageLabels')} />
-        </ModalHeader>
-        <ModalContent>
+          <Close className="close-icon" onClick={() => hideManageLabelsModal()} />
+        </section>
+        <section className="modal-content">
           <form
+            className="create-label-form"
             onSubmit={handleSubmit(this.handleSubmit.bind(this))}
             style={{ display: 'flex', alignItems: 'center' }}
           >
-            <InputWrap>
+            <div className="field-wrap">
               <Field
                 component={TextField}
                 floatingLabelFixed={true}
                 floatingLabelText={'Create label'}
                 fullWidth={true}
                 name={'name'}
+                validate={[(v: any) => required(v, 'Label name is required')]}
                 className="input-wrapper input"
                 autoFocus={false}
               />
@@ -99,104 +118,56 @@ export default class ManageLabels extends React.PureComponent<Props, OtherProps>
                 className="hidden"
                 style={{ display: 'none' }}
               />
-            </InputWrap>
+            </div>
             <LabelColors handleClick={this.addLabelColor} />
             <RaisedButton
+              type="submit"
               label="Create"
               secondary={true}
               className="successButton"
               onClick={handleSubmit(this.handleSubmit.bind(this))}
               style={{ margin: '10px 0 0 10px' }}
+              disabled={pristine || submitting}
             />
           </form>
 
-          <LabelList>
+          <div className="created-labels-list">
             {labelsAllIds.map((id: any) => {
               return (
-                <LabelSingle
+                <div
                   key={labelsById[id].id}
                   className="existingLabel"
                 >
-                  <StyledLabelIcon style={{ color: labelsById[id].color }} />
-                  <LabelName
-                    className="name"
+                  <Label className="label-icon" style={{ color: labelsById[id].color }} />
+                  <div
+                    className="label-name"
                     onClick={() => this.handleClick(labelsById[id])}
                   >
                     {labelsById[id].name}
-                  </LabelName>
+                  </div>
                   <LabelColors label={labelsById[id]} handleClick={this.editLabelColor} />
                   <IconButton
                     tooltip="Delete"
                     className="deleteLabelButton"
                     onClick={() => this.removeLabel(labelsById[id])}
                   >
-                    <StyledCloseIcon />
+                    <Close className="close-icon" />
                   </IconButton>
-                </LabelSingle>
+                </div>
               );
             })}
-          </LabelList>
+          </div>
 
-        </ModalContent>
-        <ModalFooter>
+        </section>
+        <section className="modal-footer">
           <FlatButton
             label="Close"
             primary={false}
-            onClick={() => this.closeModal('manageLabels')}
+            onClick={() => hideManageLabelsModal()}
             style={{ margin: '10px 10px 0 0' }}
           />
-        </ModalFooter>
+        </section>
       </Dialog>
     );
   }
 }
-
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  color: #6b7c93;
-  text-align: center;
-  border-bottom: 1px solid #f7f7f7;
-`;
-const ModalFooter = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  color: #6b7c93;
-  text-align: center;
-  border-top: 1px solid #f7f7f7;
-  margin-bottom: 10px;
-`;
-const ModalContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-`;
-const LabelList = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const InputWrap = styled.div`
-  margin-bottom: 20px;
-  margin-right: 10px;
-  width: 100%;
-`;
-const LabelSingle = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 5px;
-  border-bottom: 1px solid #eee;
-`;
-const LabelName = styled.div`
-  flex: 1;
-`;
-const StyledLabelIcon = styled(Label) `
-  width: 18px!important;
-  height: 18px!important;
-  padding: 5px;
-`;
-const StyledCloseIcon = styled(Close) `
-  width: 18px!important;
-  height: 18px!important;
-  padding: 5px;
-`;

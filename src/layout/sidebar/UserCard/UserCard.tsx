@@ -4,7 +4,7 @@ import Popover, { PopoverAnimationVertical } from 'material-ui/Popover';
 import { StateProps, DispatchProps, OwnProps } from './_userCard';
 import { browserHistory } from 'react-router';
 import Avatar from 'material-ui/Avatar';
-const userAvatar = require('../../../assets/user-avatar.png');
+const defaultAvatar = require('../../../assets/defaultAvatar-square.jpg');
 import Settings from 'material-ui/svg-icons/action/settings';
 
 export type Props = StateProps & OwnProps & DispatchProps;
@@ -12,6 +12,7 @@ export type Props = StateProps & OwnProps & DispatchProps;
 interface OtherProps {
   open: boolean;
   anchorEl: any;
+  heightLarger: boolean;
 }
 
 export default class UserCard extends React.PureComponent<Props, OtherProps> {
@@ -19,7 +20,8 @@ export default class UserCard extends React.PureComponent<Props, OtherProps> {
     super();
     this.state = {
       open: false,
-      anchorEl: null
+      anchorEl: null,
+      heightLarger: true,
     };
   }
 
@@ -50,16 +52,52 @@ export default class UserCard extends React.PureComponent<Props, OtherProps> {
   }
 
   goToProfile = () => {
-    browserHistory.push('/my-profile');
+    browserHistory.push('/account');
+  }
+
+  onLoad = (item: any) => {
+    const { validateAvatar } = this.props;
+    this.setState({
+      heightLarger: item.target.clientHeight >= item.target.clientWidth
+    });
+    validateAvatar();
+  }
+
+  renderAvatarImage() {
+    const { auth } = this.props;
+    const { heightLarger } = this.state;
+    var maxWidth = {
+      maxWidth: '100%'
+    };
+    var maxHeight = {
+      maxHeight: '100%',
+    };
+    return auth.user.photoURL ? (
+      <img
+        className="avatar"
+        src={auth.user.photoURL}
+        onLoad={(e: any) => this.onLoad(e)}
+        style={heightLarger ? maxWidth : maxHeight}
+      />) : (
+        <img 
+          src={defaultAvatar}
+          alt="defaultAvatar"
+          className="defaultAvatar"
+          style={heightLarger ? maxWidth : maxHeight}
+        />
+      );
   }
 
   render() {
-    const { open, anchorEl } = this.state;
+    const { open, anchorEl, heightLarger } = this.state;
     const { auth } = this.props;
     return (
       <section className="User-Card">
         <div className="avatar-wrap">
-          <Avatar className="avatar" src={`${userAvatar}`} size={100} />
+          {/* <Avatar className="avatar" src={`${userAvatar}`} size={100} /> */}
+          <Avatar className="avatarWrap" style={{ flexDirection: heightLarger ? 'column' : 'row' }}>
+            {this.renderAvatarImage()}
+          </Avatar>
         </div>
         <IconButton
           className="settings-button"

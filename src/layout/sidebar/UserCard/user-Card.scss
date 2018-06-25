@@ -14,10 +14,26 @@ span.muidocs-icon-custom-github {
   flex-direction: column;
   align-items: center;
   position: relative;
+  .avatarWrap {
+    width: 100% !important;
+    height: 100% !important;
+    img {
+      max-width: initial;
+    }
+  }
   .avatar-wrap {
-    padding: 0 10px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    border: 2px solid #3b4360;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    .avatar {
+      box-shadow: 10px 10px 30px #191b27;
+      width: auto;
+      height: auto;
+    }
   }
   .settings-button {
     position: absolute !important;
@@ -31,9 +47,9 @@ span.muidocs-icon-custom-github {
     display: flex;
     padding: 0 5px;
     p {
-      font-size: 12px;
+      font-size: 12px!important;
       font-weight: bold;
-      color: #84838b;
+      color: #7b91cb !important;
       text-shadow: 0px 0px 1px #000;
     }
   }

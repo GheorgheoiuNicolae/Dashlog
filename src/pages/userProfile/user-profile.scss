@@ -1,0 +1,50 @@
+@import './personalDetails/personal-details.scss';
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+  padding: 0 0 0 200px;
+  .avatar-input {
+    transition: all .5s linear;
+  }
+
+  .upload-icon-wrap {
+    z-index: 1;
+    transition: all .5s linear;
+  }
+
+  .avatar-input>div:hover {
+    transition: all .5s linear;
+    background: rgba(0, 0, 0, .5);
+  }
+
+  .avatar-input input {
+    cursor: pointer;
+  }
+
+  .avatar-input>div:hover svg {
+    transition: all .5s linear;
+    opacity: 1;
+  }
+
+  .avatar-input>div:hover .upload-icon-wrap {
+    transition: all .5s linear;
+    background: rgba(0, 0, 0, .8);
+  }
+
+  .upload-icon-wrap svg {
+    transition: all .5s linear;
+    opacity: 0;
+  }
+
+  .avatar-input .loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    background: rgba(0, 0, 0, .8);
+  }
+}

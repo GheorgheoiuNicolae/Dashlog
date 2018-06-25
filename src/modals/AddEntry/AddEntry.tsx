@@ -7,15 +7,22 @@ import {
 import { Dialog, FlatButton, RaisedButton } from 'material-ui';
 import Popover, { PopoverAnimationVertical } from 'material-ui/Popover';
 import { Field, FieldArray } from 'redux-form';
+import * as _ from 'lodash';
 
 import { StateProps, DispatchProps, OwnProps } from './_addEntry';
 import LabelsPicker from './LabelsPicker';
 import * as moment from 'moment';
+import ManageLabels from '../ManageLabels';
+import CheckList from './CheckList';
+// import Map from './Map/Map';
 
 import Close from 'material-ui/svg-icons/navigation/close';
 import Label from 'material-ui/svg-icons/action/label-outline';
 import LabelFilled from 'material-ui/svg-icons/action/label';
+import Event from 'material-ui/svg-icons/action/event';
+import Time from 'material-ui/svg-icons/device/access-time';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
+// import LocationIcon from 'material-ui/svg-icons/maps/my-location';
 
 export type Props = StateProps & OwnProps & DispatchProps;
 interface OtherProps {
@@ -47,20 +54,41 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
   }
 
   handleSubmit = (values: any) => {
-    const { createEntry } = this.props;
-    createEntry(values);
-    console.log('handle submit', values);
+    const {
+      createEntry,
+      auth,
+      resetForm,
+      hideModal,
+      location,
+      allDates,
+      entriesCount
+    } = this.props;
+
+    values.dateTime = new Date(values.date).getTime();
+    values.date = new Date(values.date).setHours(0, 0, 0, 0);
+    values.geoPlace = {
+      latitude: location ? location.coords.latitude : 0,
+      longitude: location ? location.coords.longitude : 0
+    };
+
+    allDates.push(values.dateTime);
+
+    createEntry(auth.user.uid, values, allDates.sort(), entriesCount + 1);
+    hideModal('addEntry');
+    resetForm('addEntry');
+
     this.closeModal('addEntry');
   }
 
   closeModal = (modalName: string) => {
-    const { hideModal } = this.props;
+    const { hideModal, resetForm } = this.props;
+    resetForm('addEntry');
     hideModal(modalName);
   }
 
   handleManageLabels() {
-    const { showModal } = this.props;
-    showModal('manageLabels');
+    const { showManageLabelsModal } = this.props;
+    showManageLabelsModal();
     this.handleLablelsPopoverClose();
   }
 
@@ -70,8 +98,19 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
       activeModal,
       array: { push, insert },
       selectedLabels,
-      labelsById
+      labelsById,
+      pristine,
+      submitting
     } = this.props;
+
+    const required = (value: any, message?: string) => {
+      return value ? undefined : 
+        (message 
+          ? (<small className="input-error">{message}</small>) 
+          : (<small className="input-error">'Required'</small>)
+        );
+    };
+
     return (
       <Dialog
         modal={true}
@@ -93,7 +132,8 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
                 <Field
                   component={TextField}
                   floatingLabelFixed={true}
-                  floatingLabelText={'Title'}
+                  floatingLabelText={'Title *'}
+                  validate={[(v: any) => required(v, 'Entry title is required')]}
                   fullWidth={true}
                   name={'title'}
                   className="input-wrapper input"
@@ -112,15 +152,16 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
                 />
               </div>
 
-              {/* <FieldArray
+              <FieldArray
                 name="checklistItems"
                 component={CheckList}
                 push={push}
                 insert={insert}
-              /> */}
+              />
             </div>
             <div className="right">
-              <div className="field-wrap">
+              <div className="field-wrap with-icon">
+                <div className="icon"><Event /></div>
                 <Field
                   component={DatePicker}
                   floatingLabelFixed={true}
@@ -132,7 +173,8 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
                   formatDate={(date: any) => moment(date).format('ll')}
                 />
               </div>
-              <div className="field-wrap">
+              <div className="field-wrap with-icon">
+                <div className="icon"><Time /></div>
                 <Field
                   component={(props: any) => <TimePicker {...props} />}
                   autoOk={true}
@@ -159,7 +201,9 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
                   onRequestClose={() => this.handleLablelsPopoverClose()}
                   animation={PopoverAnimationVertical}
                 >
-                  <section className="labels-popover">
+                  {!_.isEmpty(labelsById) 
+                  ? (
+                    <section className="labels-popover">
                     <div className="labels-popover-header">
                       <strong>Assign labels</strong>
                       <small
@@ -169,15 +213,28 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
                         Manage
                       </small>
                     </div>
-                    {labelsById ? (
                       <FieldArray
                         name="labels"
                         component={(props: any) => <LabelsPicker {...props} selectedLabelIds={selectedLabels} />}
                         push={push}
                         insert={insert}
                       />
-                    ) : <span>Please create labels.</span>}
-                  </section>
+                    </section>
+                  ) 
+                  : (
+                    <section className="labels-popover no-available-labels">
+                      <small>
+                        You don't have any labels created.
+                      </small>
+                      <RaisedButton
+                        label="Manage Labels"
+                        secondary={false}
+                        className=""
+                        onClick={() => this.handleManageLabels()}
+                        style={{ margin: '10px 10px 0 0' }}
+                      />
+                    </section>
+                  )}
                 </Popover>
 
                 {selectedLabels && selectedLabels.map((id: any) => {
@@ -196,13 +253,15 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
                   );
                 })}
               </div>
-              {/* { location && <div className="map">
-                <div style={{display: 'flex'}}>
-                  <StyledLocationIcon />
-                  <LocationLabel>Location</LocationLabel>
-                </div>
-                <Map lat={location.coords.latitude} lng={location.coords.longitude} />
-              </div> } */}
+              {/* {location && 
+                <div className="map" style={{ width: '200px', height: '200px'}}>
+                  <div style={{display: 'flex'}}>
+                    <LocationIcon className="location-icon" />
+                    <h4 className="location-label">Location</h4>
+                  </div>
+                  <Map lat={location.coords.latitude} lng={location.coords.longitude} />
+                </div> 
+              } */}
             </div>
           </section>
           <section className="modal-footer">
@@ -216,12 +275,14 @@ export default class AddEntryForm extends React.PureComponent<Props, OtherProps>
               label="Add"
               secondary={true}
               className="successButton"
-              onClick={handleSubmit(this.handleSubmit.bind(this))}
+              disabled={pristine || submitting}
+              type="submit"
+              // onClick={handleSubmit(this.handleSubmit.bind(this))}
               style={{ margin: '10px 10px 0 0' }}
             />
           </section>
         </form>
-        {/* <ManageLabels /> */}
+        <ManageLabels />
       </Dialog>
     );
   }

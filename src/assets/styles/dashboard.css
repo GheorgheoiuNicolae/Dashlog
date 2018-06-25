@@ -2,3 +2,5 @@
   display: flex;
   flex: 1;
   background: ghostwhite; }
+  .Dashboard .page-wrap {
+    height: 100%; }

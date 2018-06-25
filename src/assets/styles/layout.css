@@ -12,10 +12,23 @@ span.muidocs-icon-custom-github {
   flex-direction: column;
   align-items: center;
   position: relative; }
+  .User-Card .avatarWrap {
+    width: 100% !important;
+    height: 100% !important; }
+    .User-Card .avatarWrap img {
+      max-width: initial; }
   .User-Card .avatar-wrap {
-    padding: 0 10px;
     display: flex;
-    align-items: center; }
+    justify-content: center;
+    border: 2px solid #3b4360;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px; }
+    .User-Card .avatar-wrap .avatar {
+      box-shadow: 10px 10px 30px #191b27;
+      width: auto;
+      height: auto; }
   .User-Card .settings-button {
     position: absolute !important;
     top: 90px;
@@ -27,9 +40,9 @@ span.muidocs-icon-custom-github {
     display: flex;
     padding: 0 5px; }
     .User-Card .username p {
-      font-size: 12px;
+      font-size: 12px !important;
       font-weight: bold;
-      color: #84838b;
+      color: #7b91cb !important;
       text-shadow: 0px 0px 1px #000; }
 
 aside.sidebar {
@@ -66,7 +79,7 @@ aside.sidebar {
     display: flex;
     flex: 1;
     margin-left: 10px;
-    color: #c1c4ce; }
+    color: #c1c4ce !important; }
   aside.sidebar .button-wrapper {
     display: flex;
     justify-content: center;
@@ -75,3 +88,87 @@ aside.sidebar {
   aside.sidebar .logo {
     padding-right: 9px;
     width: 80%; }
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: scroll;
+  display: flex;
+  width: calc(100% - 200px);
+  z-index: 1;
+  background: #fff;
+  margin-right: 20px;
+  margin-top: 50px;
+  background: #fff;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 2;
+  box-shadow: 5px 5px 10px #989898; }
+  .filters-wrapper .date-range {
+    display: flex;
+    flex-direction: row;
+    flex: 1; }
+  .filters-wrapper .field-wrap {
+    margin-bottom: 10px;
+    margin-right: 20px; }
+  .filters-wrapper .labels-select {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    width: 300px; }
+    .filters-wrapper .labels-select .labels-title {
+      margin: 0 10px; }
+  .filters-wrapper .labels-popover {
+    padding: 5px;
+    min-width: 200px;
+    justify-content: space-around; }
+  .filters-wrapper .selectedLabelsWrapper {
+    display: flex;
+    flex-direction: row; }
+    .filters-wrapper .selectedLabelsWrapper .label-single {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f8ff;
+      margin-right: 20px; }
+      .filters-wrapper .selectedLabelsWrapper .label-single .label-filled-icon {
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: 5px; }
+      .filters-wrapper .selectedLabelsWrapper .label-single .name {
+        flex: 1;
+        font-size: 14px; }
+
+header {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  right: 0;
+  height: 49px;
+  z-index: 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0; }
+  header .header-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 12px;
+    border-right: 1px solid #eee;
+    padding-right: 10px; }
+    header .header-item .item-text {
+      margin: 0 5px; }
+    header .header-item p {
+      font-size: 12px !important; }
+  header .actions {
+    display: flex;
+    flex: 1;
+    padding-left: 20px; }

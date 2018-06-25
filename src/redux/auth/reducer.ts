@@ -96,10 +96,18 @@ export default function reducer(state: AuthState = authInitialState, action: any
       };
     }
 
+    case types.REQUEST_AUTH: {
+      return {
+        ...state,
+        requestAuthReason: action.payload
+      };
+    }
+
     case types.REAUTH_SUCCESS: {
       return {
         ...state,
         requestAuth: false,
+        requestAuthReason: '',
         reauthError: null,
       };
     }

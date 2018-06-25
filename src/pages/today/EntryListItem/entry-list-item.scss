@@ -1,0 +1,75 @@
+.entry-list-item.today-item {
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0;
+  height: 40px;
+  position: relative;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .1);
+  transition: translate .18s, box-shadow .18s, opacity .2s, box-shadow .18s;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+    opacity: 1 !important;
+  }
+  .date {
+    padding-left: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .entry-link {
+    display:flex;
+    flex: 1;
+    color: #8ca4af;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    justify-content: left;
+  }
+  p.date {
+    right: 0;
+    top: -28px;
+    font-size: 11px!important;
+    margin-left: 20px;
+    font-weight: 600;
+    display: block;
+    padding: 12px;
+    margin: 0;
+    color: #333;
+    background: #ececec;
+  }
+  span.button-text {
+    margin: 0 10px;
+    color: #000;
+    line-height: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    max-width: 300px;
+  }
+  div.labels {
+    display: flex;
+    .label-name {
+      font-size: 12px;
+    }
+  }
+  .entry-label {
+    display: flex;
+    padding: 0 5px;
+    align-items: center;
+  }
+  .circle {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0px 5px;
+    border-radius: 100%;
+  }
+}

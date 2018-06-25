@@ -4,23 +4,49 @@ import { Field } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
+import { StateProps, DispatchProps, OwnProps } from './_resetPassword';
 const logo = require('../../assets/logo/complete-white.svg');
+export type Props = StateProps & OwnProps & DispatchProps;
 
-interface Props {
-  resetPasswordByEmail: (email: any) => {};
-  handleSubmit: any;
-  requestedPasswordReset: boolean;
-}
-interface OwnProps { }
+interface State { emailError: boolean; }
 
-export default class ResetPasword extends React.Component<Props, OwnProps> {
+export default class ResetPasword extends React.Component<Props, State> {
+  componentWillMount() {
+    this.setState({
+      emailError: false
+    });
+  }
   submitForm = (v: any) => {
     const { resetPasswordByEmail } = this.props;
     resetPasswordByEmail(v.email);
   }
 
+  componentWillReceiveProps(next: any) {
+    // add field errors to state
+    const { reduxForm } = this.props;
+    this.setState({
+      emailError: reduxForm.resetPassword &&
+        reduxForm.resetPassword.syncErrors && reduxForm.resetPassword.syncErrors.email ? true : false
+    });
+  }
+
   render() {
     const { handleSubmit, requestedPasswordReset } = this.props;
+    const { emailError } = this.state;
+
+    const required = (value: any, message?: string) => {
+      return value ? undefined :
+        (message
+          ? (<small className="input-error">{message}</small>)
+          : (<small className="input-error">'Required'</small>)
+        );
+    };
+
+    const email = (value: any) => {
+      return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+        ? <small className="input-error">Invalid email address.</small>
+        : undefined;
+    };
     return (
       <section className="public-pages">
         <div className="reset-password">
@@ -33,7 +59,7 @@ export default class ResetPasword extends React.Component<Props, OwnProps> {
             </div>
             {!requestedPasswordReset
               ? <form onSubmit={handleSubmit(this.submitForm)}>
-                <div className="input-wrap">
+                <div className={`input-wrap ${emailError ? 'has-error' : ''}`}>
                   <Field
                     component={TextField}
                     floatingLabelFixed={true}
@@ -41,6 +67,10 @@ export default class ResetPasword extends React.Component<Props, OwnProps> {
                     fullWidth={true}
                     name="email"
                     className="input-wrapper input"
+                    validate={[
+                      (v: any) => required(v, 'Email is required'),
+                      (v: any) => email(v),
+                    ]}
                   />
                 </div>
                 <RaisedButton

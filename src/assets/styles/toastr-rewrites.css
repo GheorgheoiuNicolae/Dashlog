@@ -1,0 +1,27 @@
+.redux-toastr .toastr.rrt-success {
+  background-color: #51D399;
+  min-height: 40px !important;
+  box-shadow: 6px 6px 11px rgba(0, 0, 0, 0.1); }
+
+.redux-toastr .toastr.rrt-error {
+  min-height: 40px !important;
+  box-shadow: 6px 6px 11px rgba(0, 0, 0, 0.1); }
+
+.rrt-left-container .rrt-holder {
+  height: auto !important; }
+
+.rrt-left-container .rrt-holder svg {
+  width: 20px !important;
+  height: 20px !important; }
+
+.rrt-middle-container {
+  padding: 5px !important; }
+
+.rrt-middle-container .rrt-title {
+  margin-bottom: 0 !important; }
+
+.rrt-middle-container .rrt-text {
+  font-size: 14px; }
+
+.rrt-right-container button {
+  color: #fff; }

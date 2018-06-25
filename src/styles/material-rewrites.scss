@@ -104,3 +104,31 @@
 .input-wrapper.no-label hr {
   bottom: 24px !important;
 }
+// Input errors
+.input-wrapper.input div:nth-last-child(1) {
+  display: flex;
+  position: absolute !important;
+  top: 100%;
+  bottom: initial !important;
+  left: 0;
+  right: 0;
+  line-height: unset !important;
+}
+
+.input-wrapper.input div:nth-last-child(1) small.input-error {
+  color: #f44236 !important;
+  background: #fbdddb;
+  padding: 0 15px;
+  flex: 1;
+  /* Compensate for input's <hr> - animated bottom border */
+  margin-top: -2px;
+  text-align: left;
+}
+
+.input-wrap {
+  transition: all 700ms;
+}
+.input-wrap.has-error {
+  transition: all 700ms;
+  margin-bottom: 25px;
+}

@@ -1,3 +1,51 @@
+@import './EntryListItem/EntryListItem.scss';
+
 .Home {
   margin-left: 200px;
+}
+#entries-page-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+  padding: 0 0 0 200px;
+
+  .entry-list {
+    margin-top: 50px;
+    &.list {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-top: 50px;
+      position: relative;
+    }
+  }
+  .floating-action-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9;
+  }
+
+  .timeline-bar {
+    position: fixed;
+    width: 7px;
+    height: 100%;
+    background: #fff;
+    left: 264px;
+    padding: 0;
+  }
+
+  .day {
+    padding: 1px 30px 1px 30px;
+    .date {
+      margin-left: 50px;
+      color: #607d8b;
+      font-weight: bold;
+    }
+  }
+  #scrollTarget {
+    background: #E0F2F1;
+  }
 }

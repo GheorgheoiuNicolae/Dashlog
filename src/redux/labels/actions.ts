@@ -33,3 +33,10 @@ export const removeLabelError = (e: any) => ({
   type: types.REMOVE_LABEL_ERROR,
   payload: e,
 });
+
+export const showManageLabelsModal = () => ({
+  type: types.SHOW_MANAGE_LABELS_MODAL
+});
+export const hideManageLabelsModal = () => ({
+  type: types.HIDE_MANAGE_LABELS_MODAL
+});

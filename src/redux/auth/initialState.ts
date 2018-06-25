@@ -9,6 +9,7 @@ export const authInitialState: AuthState = {
   avatarValid: true,
   avatarUploadInProgress: false,
   requestAuth: false,
+  requestAuthReason: '',
   reauthError: null,
   updateEmailError: null,
   updatePasswordError: null,

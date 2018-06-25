@@ -1,0 +1,11 @@
+.personal-details {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+
+  .email-verification-error {
+    display: block;
+    font-size: 12px!important;
+    color: #ff9800!important;
+  }
+}

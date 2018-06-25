@@ -1,0 +1,69 @@
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: scroll;
+  display: flex;
+  width: calc(100% - 200px);
+  z-index: 1;
+  background: #fff;
+  margin-right: 20px;
+  margin-top: 50px;
+  background: #fff;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 2;
+  box-shadow: 5px 5px 10px #989898;
+  .date-range {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
+  .field-wrap {
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+  .labels-select {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    width: 300px;
+
+    .labels-title {
+      margin: 0 10px;
+    }
+  }
+  .labels-popover {
+    padding: 5px;
+    min-width: 200px;
+    justify-content: space-around;
+  }
+
+  .selectedLabelsWrapper {
+    display: flex;
+    flex-direction: row;
+
+    .label-single {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f8ff;
+      margin-right: 20px;
+
+      .label-filled-icon {
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: 5px;
+      }
+      .name {
+        flex: 1;
+        font-size: 14px
+      }
+    }
+  }
+}

@@ -12,6 +12,7 @@ export interface AuthState {
   avatarValid: boolean;
   avatarUploadInProgress: boolean;
   requestAuth: boolean;
+  requestAuthReason: 'changeEmail' | 'changePassword' | '';
   reauthError: any;
   updateEmailError: any;
   updatePasswordSuccess: boolean | null;

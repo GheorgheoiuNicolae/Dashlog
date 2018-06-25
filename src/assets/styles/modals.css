@@ -1,12 +1,44 @@
-.checklist-item {
-  padding: 16px 60px 16px 42px !important; }
+.labels-picker {
+  display: flex;
+  flex-direction: column; }
+  .labels-picker .label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 2px; }
+    .labels-picker .label .name {
+      flex: 1;
+      font-size: 14px; }
+    .labels-picker .label .label-icon {
+      width: 18px !important;
+      height: 18px !important;
+      padding: 5px; }
+    .labels-picker .label .check-icon {
+      width: 18px !important;
+      height: 18px !important;
+      padding: 5px; }
 
-.checklist-item-checkbox {
-  left: 0 !important; }
-
-.checklist-item-remove {
-  top: 0px !important;
-  margin-right: 0 !important; }
+.check-list-wrapper {
+  margin-bottom: 10px; }
+  .check-list-wrapper h5.subheader {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer; }
+  .check-list-wrapper h5.subheader p {
+    margin: 5px; }
+  .check-list-wrapper .checklist-item:hover .checklist-item-remove {
+    display: block !important; }
+  .check-list-wrapper .checklist-item {
+    padding: 10px 60px 10px 42px !important; }
+  .check-list-wrapper .checklist-item-checkbox {
+    left: 0 !important;
+    top: 5px !important; }
+  .check-list-wrapper .checklist-item-remove {
+    top: -5px !important;
+    display: none !important;
+    margin-right: 0 !important; }
 
 .modal-header {
   background: ghostwhite; }
@@ -66,7 +98,8 @@
   padding-bottom: 5px;
   border-bottom: 1px solid #eee; }
   .AddEntry .labels-select-area .labels-heading {
-    margin: 0 10px; }
+    margin: 0 10px;
+    flex: 1; }
 
 .AddEntry .label-single {
   display: flex;
@@ -85,7 +118,7 @@
 
 .labels-popover {
   padding: 5px;
-  min-width: 200px;
+  min-width: 160px;
   justify-content: space-around; }
   .labels-popover .labels-popover-header {
     display: flex;
@@ -93,3 +126,116 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px 0; }
+    .labels-popover .labels-popover-header strong {
+      color: #2b1a51;
+      font-size: 13px; }
+  .labels-popover.no-available-labels {
+    display: flex;
+    flex-direction: column;
+    width: 155px;
+    align-items: center;
+    padding: 15px; }
+    .labels-popover.no-available-labels small {
+      text-align: center;
+      color: #6b7c93; }
+
+.field-wrap.with-icon {
+  display: flex;
+  flex-direction: row; }
+  .field-wrap.with-icon .icon {
+    background: #f2f2f2;
+    height: 26px;
+    margin-top: 23px;
+    padding: 5px; }
+  .field-wrap.with-icon .datepicker-wrapper input {
+    border: 0 !important;
+    background-color: rgba(0, 0, 0, 0.02) !important; }
+  .field-wrap.with-icon .datepicker-wrapper label {
+    left: -33px; }
+  .field-wrap.with-icon .location-label {
+    margin: 3px 10px 10px 10px;
+    font-weight: 400; }
+  .field-wrap.with-icon .location-icon {
+    color: #f44336 !important; }
+
+.manage-labels.dialog .modal-header {
+  display: flex;
+  justify-content: center;
+  color: #6b7c93;
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7; }
+
+.manage-labels.dialog .modal-content {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
+  .manage-labels.dialog .modal-content .create-label-form {
+    flex: 1;
+    margin: 10px 20px; }
+  .manage-labels.dialog .modal-content .created-labels-list {
+    display: flex;
+    flex-direction: column; }
+    .manage-labels.dialog .modal-content .created-labels-list .existingLabel:first-child {
+      border-top: 1px solid #eee; }
+    .manage-labels.dialog .modal-content .created-labels-list .existingLabel {
+      display: flex;
+      align-items: center;
+      height: 28px;
+      cursor: pointer;
+      padding: 5px;
+      border-bottom: 1px solid #eee; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .label-name {
+        flex: 1;
+        text-align: left; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .label-icon {
+        width: 18px !important;
+        height: 18px !important;
+        padding: 5px; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .close-icon {
+        width: 18px !important;
+        height: 18px !important;
+        padding: 5px; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .existingLabelColors {
+        display: none;
+        margin-top: 0;
+        margin-right: 20px; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .deleteLabelButton {
+        display: none !important;
+        width: 38px !important;
+        height: 68px !important;
+        padding: 0 !important; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel:hover .existingLabelColors {
+        display: flex; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel:hover .deleteLabelButton {
+        display: inline-block !important; }
+  .manage-labels.dialog .modal-content .field-wrap {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 100%; }
+    .manage-labels.dialog .modal-content .field-wrap small.input-error {
+      text-align: left; }
+
+.manage-labels.dialog .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
+
+.delete-entry-dialog .content {
+  display: flex;
+  flex: 1;
+  padding: 20px; }
+
+.delete-entry-dialog footer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  padding: 10px; }

@@ -1,6 +1,8 @@
 import { firebaseDb } from '../../firebase';
 import * as actions from './actions';
+import * as uiCreators from '../ui/creators';
 import { browserHistory } from 'react-router';
+import { toastr } from 'react-redux-toastr';
 
 export const getInitialEntries = (uid: string) => {
   const today = new Date().setHours(0, 0, 0, 0);
@@ -157,36 +159,6 @@ export const removeAllCollections = () => {
 };
 
 export const createEntry = (uid: string, data: any, allDates: any[], entriesCount: number) => {
-
-  // for (let i = 0; i < 1000; i++) {
-  //   const entry = {
-  //     date: 1548585280775,
-  //     dateTime: 1548585280775,
-  //     geoPlace: {
-  //       latitude: 45.6579755,
-  //       longitude: 25.6011977
-  //     },
-  //     labels: ['LEREGdqfHnxEOstXcJ7'],
-  //     title: `Entry ${i}`,
-  //     name: `Entry ${i}`,
-  //   };
-  //   let entryRef: any = firebaseDb
-  //     .ref()
-  //     .child(`entries/${uid}/list`)
-  //     .push();
-  //   let newEntryKey = entryRef.getKey();
-  //   data.id = newEntryKey;
-
-  //   firebaseDb.ref().child(`entries/${uid}/list/${newEntryKey}`).set(entry, function(err: any) {
-  //     if (err) {
-  //       console.log('err saving: ', err);
-  //     } else {
-  //       console.log('successfully saved');
-  //     }
-  //   });
-
-  // }
-
   return function (dispatch: any) {
     let entryRef: any = firebaseDb
       .ref()
@@ -202,8 +174,10 @@ export const createEntry = (uid: string, data: any, allDates: any[], entriesCoun
     // Do a deep-path update
     firebaseDb.ref().update(updatedEntryData, function (error: any) {
       if (error) {
-        console.log('Error updating data:', error);
+        console.error(error);
+        toastr.error('Error', 'Something went wrong while saving.');
       } else {
+        uiCreators.resetForm('addEntry');
         dispatch(actions.createEntrySuccess(data.dateTime));
       }
     });
@@ -218,8 +192,10 @@ export const editEntry = (uid: string, data: any, allDates: number[]) => {
     // Do a deep-path update
     firebaseDb.ref().update(updatedEntryData, function (error: any) {
       if (error) {
-        console.log('Error updating data:', error);
+        console.error(error);
+        toastr.error('Error', 'Something went wrong while saving.');
       } else {
+        toastr.success('Success', 'Your updates have been saved.');
         dispatch(actions.saveEntryEdits(data));
       }
     });
@@ -236,7 +212,8 @@ export const removeEntry = (uid: any, data: any, entriesCount: number, allDates:
     // Do a deep-path update
     firebaseDb.ref().update(updates, function (error: any) {
       if (error) {
-        console.log('Error updating data:', error);
+        console.error(error);
+        toastr.error('Error', 'Something went wrong while deleting entry.');
       } else {
         dispatch(actions.removeEntrySuccess(data));
         browserHistory.push('/entries');

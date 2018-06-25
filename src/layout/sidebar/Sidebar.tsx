@@ -7,7 +7,7 @@ import UserCard from './UserCard/';
 
 import Dashboard from 'material-ui/svg-icons/action/dashboard';
 import List from 'material-ui/svg-icons/action/list';
-import MyLocation from 'material-ui/svg-icons/maps/my-location';
+// import MyLocation from 'material-ui/svg-icons/maps/my-location';
 import Add from 'material-ui/svg-icons/content/add';
 
 const logo = require('../../assets/logo/full-dark.svg');
@@ -48,7 +48,7 @@ export default class Sidebar extends React.Component<Props, {}> {
           }
         />
 
-        <FlatButton
+        {/* <FlatButton
           className="flat-button"
           style={{ maxWidth: '100%', minWidth: 'initial', width: '100%', height: '50px' }}
           children={
@@ -57,7 +57,7 @@ export default class Sidebar extends React.Component<Props, {}> {
               <span className="button-text">Goals</span>
             </Link>
           }
-        />
+        /> */}
 
         <Divider style={{ background: '#232527' }} />
 

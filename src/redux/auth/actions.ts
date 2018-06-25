@@ -122,9 +122,10 @@ export function updateUserEmailError(e: any) {
   };
 }
 
-export function requestAuth() {
+export function requestAuth(reason: string) {
   return {
-    type: types.REQUEST_AUTH
+    type: types.REQUEST_AUTH,
+    payload: reason
   };
 }
 export function reAuthSuccess() {
@@ -134,7 +135,7 @@ export function reAuthSuccess() {
 }
 export function reAuthError(e: any) {
   return {
-    type: types.REAUTH_SUCCESS,
+    type: types.REAUTH_ERROR,
     payload: e,
   };
 }

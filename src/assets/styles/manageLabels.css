@@ -1,0 +1,68 @@
+.manage-labels.dialog .modal-header {
+  display: flex;
+  justify-content: center;
+  color: #6b7c93;
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7; }
+
+.manage-labels.dialog .modal-content {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
+  .manage-labels.dialog .modal-content .create-label-form {
+    flex: 1;
+    margin: 10px 20px; }
+  .manage-labels.dialog .modal-content .created-labels-list {
+    display: flex;
+    flex-direction: column; }
+    .manage-labels.dialog .modal-content .created-labels-list .existingLabel:first-child {
+      border-top: 1px solid #eee; }
+    .manage-labels.dialog .modal-content .created-labels-list .existingLabel {
+      display: flex;
+      align-items: center;
+      height: 28px;
+      cursor: pointer;
+      padding: 5px;
+      border-bottom: 1px solid #eee; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .label-name {
+        flex: 1;
+        text-align: left; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .label-icon {
+        width: 18px !important;
+        height: 18px !important;
+        padding: 5px; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .close-icon {
+        width: 18px !important;
+        height: 18px !important;
+        padding: 5px; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .existingLabelColors {
+        display: none;
+        margin-top: 0;
+        margin-right: 20px; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel .deleteLabelButton {
+        display: none !important;
+        width: 38px !important;
+        height: 68px !important;
+        padding: 0 !important; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel:hover .existingLabelColors {
+        display: flex; }
+      .manage-labels.dialog .modal-content .created-labels-list .existingLabel:hover .deleteLabelButton {
+        display: inline-block !important; }
+  .manage-labels.dialog .modal-content .field-wrap {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 100%; }
+    .manage-labels.dialog .modal-content .field-wrap small.input-error {
+      text-align: left; }
+
+.manage-labels.dialog .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }

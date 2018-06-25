@@ -1,0 +1,184 @@
+.time-widget {
+  display: flex;
+  width: 100%;
+  flex: 3;
+  padding-left: 10px;
+  flex-direction: column;
+  justify-content: initial;
+  align-items: flex-end;
+  .time {
+    color: #fff;
+    z-index: 1;
+    font-size: 70px;
+    text-shadow: 1px 1px 1px #20232a;
+    margin: 40px 0 0 0;
+  }
+  .welcome {
+    color: #fff;
+    z-index: 1;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px #20232a;
+    text-align: right;
+    margin: 10px 0 50px 0;
+    small {
+      font-size: inherit;
+    }
+  }
+  .quote {
+    color: #fff;
+    z-index: 1;
+    font-size: 12px;
+    padding: 10px;
+    background: rgba(0, 0, 0, .3);
+    margin-left: 40px;
+    font-weight: 300;
+    span {
+      color: #969ebd!important;
+      z-index: 1;
+      font-size: 12px;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+    }
+  }
+
+  @font-face {
+    font-family: 'icons';
+    src: url("../../assets/font/icons.eot");
+    src: url("../../assets/font/icons.eot?#iefix") format('embedded-opentype'),
+    url("../../assets/font/icons.woff") format('woff'),
+    url("../../assets/font/icons.ttf") format('truetype'),
+    url("../../assets/font/icons.svg#icons") format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Let's set and reset some common styles */
+
+  .mb-wrap {
+    width: 300px;
+    position: relative;
+  }
+
+  .mb-wrap p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .mb-wrap blockquote {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .mb-wrap cite {
+    font-style: normal;
+  }
+
+  .mb-style-3 {
+    width: 500px;
+  }
+
+  .mb-style-3 blockquote {
+    background: rgba(255,255,255, .04);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 0 rgba(123, 122, 189, 0.7), -5px -4px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .mb-style-3 blockquote:after,
+  .mb-style-3 blockquote:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .mb-style-3 blockquote:after {
+    border-top-color: #ffffff;
+    border-width: 10px;
+    left: -60px;
+    margin-left: -10px;
+    display: none;
+  }
+
+  .mb-style-3 blockquote:before {
+    border-top-color: rgba(0, 0, 0, 0.01);
+    border-width: 11px;
+    left: 65%;
+    margin-left: -11px;
+  }
+
+  .mb-style-3 blockquote p {
+    font-family: 'Alegreya', serif;
+    font-size: 18px;
+    color: #f7f7f7!important;
+    font-weight: 400;
+    line-height: 25px;
+    font-style: italic;
+    text-indent: 50px;
+    position: relative;
+  }
+
+  .mb-style-3 blockquote p:before {
+    content: '\201C';
+    font-family: serif;
+    font-style: normal;
+    font-weight: 700;
+    position: absolute;
+    font-size: 75px;
+    top: 0px;
+    left: -50px;
+    color: #93a5c8;
+    text-shadow: 7px 14px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .mb-style-3 .mb-attribution {
+    text-align: right;
+    padding: 20px 20px 20px 20px;
+    position: relative;
+    margin-top: -45px;
+  }
+
+  .mb-style-3 .mb-thumb {
+    display: block;
+    width: 70px;
+    height: 70px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    // background: url(../images/bronte.jpg) no-repeat center center;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.5), 0 2px 3px rgba(0, 0, 0, 0.6);
+    display: none;
+  }
+
+  .mb-style-3 .mb-author {
+    font-family: 'Alegreya SC', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #4075bd!important;
+    font-style: italic;
+    // text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+  }
+
+  .mb-style-3 cite {
+    display: none;
+  }
+  .mb-style-3 cite a {
+    font-family: 'Alegreya', serif;
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .mb-style-3 cite a:hover {
+    color: rgba(188, 147, 200, 1);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+  }
+}

@@ -5,7 +5,8 @@ body,
   padding: 0;
   font-family: sans-serif;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 body > div {
   height: 100%; }
@@ -15,6 +16,11 @@ img {
 
 .successButton button {
   background-color: #51D399 !important; }
+
+button:disabled,
+button[disabled].successButton {
+  background-color: rgba(81, 211, 153, 0.6) !important;
+  cursor: not-allowed !important; }
 
 .dangerButton button {
   background-color: crimson !important; }
@@ -31,13 +37,14 @@ img {
 
 .wallpaper {
   /* background-image: url("https://www.meistertask.com/images/wallpapers/RHwFy48z.jpg"); */
-  background-image: url("../backgrounds/2_original.jpg");
+  background-image: url("../backgrounds/2_original2.jpg");
   background-size: cover;
   background-position: center center;
   opacity: .05; }
 
 .wallpaper-faded {
   clip: rect(0px 200px auto 0px);
-  background-image: url("../backgrounds/2_blur.jpg");
+  background-image: url("../backgrounds/2_blur2.jpg");
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+  width: initial !important; }

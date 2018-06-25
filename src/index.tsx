@@ -16,6 +16,9 @@ import Register from './pages/register';
 import ResetPassword from './pages/resetPassword';
 
 import Home from './pages/home';
+import Entry from './pages/entry';
+import Today from './pages/today';
+import UserProfile from './pages/userProfile';
 
 injectTapEventPlugin();
 
@@ -26,7 +29,10 @@ export const routeList = {
   resetPassword: '/resetPassword',
   authentication: '/authentication',
   dashboard: '/dashboard',
-  overview: '/overview',
+  entries: '/entries',
+  entry: '/entry/',
+  today: '/today',
+  account: '/account',
 };
 
 const router = (
@@ -40,8 +46,11 @@ const router = (
           <Route path={routeList.resetPassword} component={ResetPassword} />
           <Route component={Authentication} path={routeList.authentication}>
             <Route component={Dashboard}>
-              <IndexRedirect to={routeList.overview} />
-              <Route path={routeList.overview} component={Home} />
+              <IndexRedirect to={routeList.entries} />
+              <Route path={routeList.entries} component={Home} />
+              <Route path={routeList.entry + ':id'} component={Entry} />
+              <Route path={routeList.today} component={Today} />
+              <Route path={routeList.account} component={UserProfile} />
             </Route>
           </Route>
         </Route>
