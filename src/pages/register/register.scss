@@ -20,7 +20,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: #eee;
+    a {
+      text-decoration: none;
+    }
   }
   .styledRouterLink {
     color: #333;
@@ -40,5 +44,10 @@
   .error {
     color: crimson;
     margin: 5px 0;
+  }
+  .fake-link {
+    cursor: pointer;
+    font-weight: normal;
+    margin-left: 0px;
   }
 }

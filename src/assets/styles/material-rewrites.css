@@ -106,3 +106,14 @@
 .input-wrap.has-error {
   transition: all 700ms;
   margin-bottom: 25px; }
+
+.input-wrap.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: left; }
+  .input-wrap.checkbox span {
+    left: 0 !important; }
+  .input-wrap.checkbox .checkbox-wrapper {
+    width: auto !important; }
+  .input-wrap.checkbox .checkbox-wrapper label {
+    width: auto !important; }

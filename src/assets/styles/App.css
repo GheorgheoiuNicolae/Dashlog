@@ -24,7 +24,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: #eee; }
+    .register footer a {
+      text-decoration: none; }
   .register .styledRouterLink {
     color: #333;
     text-decoration: none;
@@ -40,6 +43,10 @@
   .register .error {
     color: crimson;
     margin: 5px 0; }
+  .register .fake-link {
+    cursor: pointer;
+    font-weight: normal;
+    margin-left: 0px; }
 
 .login {
   width: 400px;
@@ -60,7 +67,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: #eee; }
+    .login footer a {
+      text-decoration: none; }
   .login .styledRouterLink {
     color: #333;
     text-decoration: none;
@@ -96,7 +106,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: #eee; }
+    .reset-password footer a {
+      text-decoration: none; }
   .reset-password .styledRouterLink {
     color: #333;
     text-decoration: none;
@@ -1085,6 +1098,70 @@ header {
   border-top: 1px solid #eee;
   padding: 10px; }
 
+.terms-and-conditions-dialog .modal-header {
+  display: flex;
+  justify-content: center;
+  color: #6b7c93;
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7;
+  position: fixed;
+  width: 100%; }
+
+.terms-and-conditions-dialog .content {
+  margin-top: 50px;
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  flex-direction: column; }
+
+.terms-and-conditions-dialog footer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  padding: 10px; }
+
+.terms-and-conditions-dialog .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
+
+.privacy-policy-dialog .modal-header {
+  display: flex;
+  justify-content: center;
+  color: #6b7c93;
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7;
+  position: fixed;
+  width: 100%; }
+
+.privacy-policy-dialog .content {
+  margin-top: 50px;
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  flex-direction: column; }
+
+.privacy-policy-dialog footer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  padding: 10px; }
+
+.privacy-policy-dialog .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
+
 /* change input's yellow autocompleted style */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -1262,6 +1339,17 @@ button[disabled].successButton {
 .input-wrap.has-error {
   transition: all 700ms;
   margin-bottom: 25px; }
+
+.input-wrap.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: left; }
+  .input-wrap.checkbox span {
+    left: 0 !important; }
+  .input-wrap.checkbox .checkbox-wrapper {
+    width: auto !important; }
+  .input-wrap.checkbox .checkbox-wrapper label {
+    width: auto !important; }
 
 h1 {
   font-size: 28px;

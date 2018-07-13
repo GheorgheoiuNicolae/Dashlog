@@ -1,23 +1,29 @@
 import * as React from 'react';
 import { Field } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import { StateProps, DispatchProps, OwnProps } from './_register';
 import { browserHistory } from 'react-router';
+import PrivacyPolicyModal from '../../modals/PrivacyPolicy';
+import TermsAndConditionsModal from '../../modals/TermsAndConditions';
 const logo = require('../../assets/logo/complete-white.svg');
 
 export type Props = StateProps & OwnProps & DispatchProps;
 interface State {
   emailError: boolean;
   passwordError: boolean;
+  termsAndConditionsError: boolean;
+  privacyPolicyError: boolean;
 }
 
 export default class Login extends React.Component<Props, State> {
   componentWillMount() {
     this.setState({
       emailError: false,
-      passwordError: false
+      passwordError: false,
+      termsAndConditionsError: false,
+      privacyPolicyError: false,
     });
   }
 
@@ -42,11 +48,16 @@ export default class Login extends React.Component<Props, State> {
         reduxForm.register.syncErrors && reduxForm.register.syncErrors.email ? true : false,
       passwordError: reduxForm.register &&
         reduxForm.register.syncErrors && reduxForm.register.syncErrors.password ? true : false,
+      termsAndConditionsError: reduxForm.register && 
+        reduxForm.register.registeredFields.termsAndConditions.touched && 
+        reduxForm.register.values && reduxForm.register.values.termsAndConditions !== true ? true : false,
+      privacyPolicyError: reduxForm.register &&
+        reduxForm.register.syncErrors && reduxForm.register.syncErrors.privacyPolicy ? true : false,
     });
   }
 
   render() {
-    const { handleSubmit, auth, submitting } = this.props;
+    const { handleSubmit, auth, submitting, reduxForm, showModal, hideModal, activeModal } = this.props;
     const { emailError, passwordError } = this.state;
 
     const required = (value: any, message?: string) => {
@@ -66,6 +77,12 @@ export default class Login extends React.Component<Props, State> {
     const minLength = (value: any, min: number) => {
       return value && value.length < min 
         ? <small className="input-error">Password must contain at least {min} characters.</small> 
+        : undefined;
+    };
+
+    const requireThruthy = (value: any, errText: string) => {
+      return !value
+        ? <small className="input-error">{errText}</small>
         : undefined;
     };
 
@@ -114,9 +131,48 @@ export default class Login extends React.Component<Props, State> {
                   ]}
                 />
               </div>
+
+              <div className={`input-wrap checkbox`}>
+                <Field
+                  component={Checkbox}
+                  // label={'I agree to terms and conditions.'}
+                  name={`termsAndConditions`}
+                  className="checkbox-wrapper"
+                  validate={[
+                    (v: any) => requireThruthy(v, 'Agreement required.')
+                  ]}
+                />
+                <span>I agree to 
+                  <b 
+                    className="fake-link"
+                    onClick={() => showModal('termsAndConditions')}
+                  > terms and conditions
+                  </b>.
+                </span>
+              </div>
+
+              <div className={`input-wrap checkbox`}>
+                <Field
+                  component={Checkbox}
+                  // label={'I agree to the privacy policy.'}
+                  name={`privacyPolicy`}
+                  className="checkbox-wrapper"
+                  validate={[
+                    (v: any) => requireThruthy(v, 'Agreement required.')
+                  ]}
+                />
+                <span>I agree to 
+                  <b className="fake-link" onClick={() => showModal('privacyPolicy')} > terms and conditions</b>.</span>
+              </div>
+
               <RaisedButton
                 fullWidth={true}
-                disabled={emailError || passwordError || submitting || auth.isLoading}
+                disabled={emailError || passwordError || submitting || auth.isLoading 
+                  || (reduxForm && reduxForm.register && 
+                      reduxForm.register.values && !reduxForm.register.values.privacyPolicy)
+                  || (reduxForm && reduxForm.register && 
+                      reduxForm.register.values && !reduxForm.register.values.termsAndConditions)
+                }
                 type="submit"
                 label="Register"
                 primary={true}
@@ -128,6 +184,17 @@ export default class Login extends React.Component<Props, State> {
             <Link className="styledRouterLink" to="/login" activeClassName="active">Login</Link>
           </footer>
         </div>
+
+        <TermsAndConditionsModal 
+          showModal={showModal}
+          hideModal={hideModal}
+          activeModal={activeModal}
+        />
+        <PrivacyPolicyModal
+          showModal={showModal}
+          hideModal={hideModal}
+          activeModal={activeModal}
+        />
       </section>
     );
   }

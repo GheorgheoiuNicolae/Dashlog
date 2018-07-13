@@ -132,3 +132,19 @@
   transition: all 700ms;
   margin-bottom: 25px;
 }
+
+.input-wrap.checkbox { 
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  span {
+    left: 0 !important;
+  }
+  .checkbox-wrapper {
+    width: auto!important;
+  }
+  .checkbox-wrapper label {
+    width: auto!important;
+  }
+}

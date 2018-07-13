@@ -1,0 +1,31 @@
+.terms-and-conditions-dialog .modal-header {
+  display: flex;
+  justify-content: center;
+  color: #6b7c93;
+  text-align: center;
+  border-bottom: 1px solid #f7f7f7;
+  position: fixed;
+  width: 100%; }
+
+.terms-and-conditions-dialog .content {
+  margin-top: 50px;
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  flex-direction: column; }
+
+.terms-and-conditions-dialog footer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  padding: 10px; }
+
+.terms-and-conditions-dialog .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #6b7c93;
+  text-align: center;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 10px; }
